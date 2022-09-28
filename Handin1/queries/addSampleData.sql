@@ -9,7 +9,7 @@ VALUES
 INSERT INTO Citizen 
 (CitizenID, FirstName, LastName, EmailAddress, PhoneNumber, Category, CVR)
 VALUES
-(4, 'Super', 'Man', 'superman@mail.com', 69696969, 'Business', 123123)
+(4, 'Super', 'Man', 'superman@mail.com', 69696969, 'Business', 123123),
 (5, 'Super', 'Woman', 'superwoman@mail.com', 42042069, 'Business', 321321)
 
 INSERT INTO Facility
@@ -28,7 +28,7 @@ INSERT INTO [Booking]
 VALUES
 (1, '2022-01-01 00:00:00', '2022-01-02 00:00:00', 24, 'We are partying', 7),
 (2, '2022-01-02 00:00:00', '2022-01-03 00:00:00', 4, 'We are playing tennis', 5),
-(3, '2022-01-03 00:00:00', '2022-01-04 00:00:00', 12, 'We are making fire', 6),
+(3, '2022-01-03 00:00:00', '2022-01-04 00:00:00', 12, 'We are making fire', 6)
 
 INSERT INTO [Reservation]
 (ReservationID, ReservedByID, BookingID)
