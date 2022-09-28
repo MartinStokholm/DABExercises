@@ -12,7 +12,7 @@ CREATE TABLE [Citizen]
     (
         Category='Private' OR
         Category='Business' OR
-        Category='Student')
+        Category='Student'
     ),
     CVR INT DEFAULT NULL,
 )
@@ -28,9 +28,8 @@ CREATE TABLE [Facility]
         Kind='Sports hall' OR
         Kind='Tennis court' OR
         Kind='Fireplace' OR
-        Kind='Forest' OR
+        Kind='Forest' 
     ),
-    
     StreetName CHAR(100),
     StreetNumber INT,
     ZipCode INT,

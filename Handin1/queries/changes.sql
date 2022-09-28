@@ -1,6 +1,3 @@
-ALTER TABLE Booking
-ADD FacilityID INT
-
 USE RFM_system_au632826
 DROP TABLE Reservation
 DROP TABLE Citizen
