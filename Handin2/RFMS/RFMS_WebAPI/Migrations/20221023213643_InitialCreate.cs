@@ -72,6 +72,27 @@ namespace RFMS_WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Maintenances",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Describtion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FacilityId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Maintenances", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Maintenances_Facilities_FacilityId",
+                        column: x => x.FacilityId,
+                        principalTable: "Facilities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
@@ -103,6 +124,11 @@ namespace RFMS_WebAPI.Migrations
                 column: "FacilityId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Maintenances_FacilityId",
+                table: "Maintenances",
+                column: "FacilityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reservations_BookingId",
                 table: "Reservations",
                 column: "BookingId");
@@ -115,6 +141,9 @@ namespace RFMS_WebAPI.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Maintenances");
+
             migrationBuilder.DropTable(
                 name: "Reservations");
 

@@ -135,6 +135,31 @@ namespace RFMS_WebAPI.Migrations
                     b.ToTable("Facilities");
                 });
 
+            modelBuilder.Entity("RFMS_WebAPI.Models.Maintenance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Describtion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FacilityId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacilityId");
+
+                    b.ToTable("Maintenances");
+                });
+
             modelBuilder.Entity("RFMS_WebAPI.Models.Reservation", b =>
                 {
                     b.Property<long>("Id")
@@ -169,6 +194,17 @@ namespace RFMS_WebAPI.Migrations
                     b.Navigation("Facility");
                 });
 
+            modelBuilder.Entity("RFMS_WebAPI.Models.Maintenance", b =>
+                {
+                    b.HasOne("RFMS_WebAPI.Models.Facility", "Facility")
+                        .WithMany("Maintenances")
+                        .HasForeignKey("FacilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Facility");
+                });
+
             modelBuilder.Entity("RFMS_WebAPI.Models.Reservation", b =>
                 {
                     b.HasOne("RFMS_WebAPI.Models.Booking", "Booking")
@@ -186,6 +222,11 @@ namespace RFMS_WebAPI.Migrations
                     b.Navigation("Booking");
 
                     b.Navigation("Citizen");
+                });
+
+            modelBuilder.Entity("RFMS_WebAPI.Models.Facility", b =>
+                {
+                    b.Navigation("Maintenances");
                 });
 #pragma warning restore 612, 618
         }

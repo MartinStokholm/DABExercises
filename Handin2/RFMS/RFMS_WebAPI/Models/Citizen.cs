@@ -9,5 +9,6 @@
         public string PhoneNumber { get; set; } = "";
         public string Category { get; set; } = "";
         public int? CVR { get; set; }
+        public int CPR { get; set; }
     }
 }

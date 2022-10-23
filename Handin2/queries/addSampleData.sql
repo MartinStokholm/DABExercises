@@ -1,18 +1,18 @@
 USE RFM_system_au632826_v2
-INSERT INTO Citizens 
+INSERT INTO [Citizens] 
 (FirstName, LastName, Email, PhoneNumber, Category)
 VALUES
 ('John', 'Doe', 'johndoe@mail.com', 12345678, 'Student'),
 ('Ann', 'Doe', 'anndoe@mail.com', 22345678, 'Private'),
 ('Jane', 'Doe', 'janedoe@mail.com', 32345678, 'Student')
 
-INSERT INTO Citizens 
+INSERT INTO [Citizens] 
 (FirstName, LastName, Email, PhoneNumber, Category, CVR)
 VALUES
 ('Super', 'Man', 'superman@mail.com', 69696969, 'Business', 123123),
 ('Super', 'Woman', 'superwoman@mail.com', 42042069, 'Business', 321321)
 
-INSERT INTO Facilities
+INSERT INTO [Facilities]
 (Name, Kind, StreetName, StreetNumber, ZipCode, CanBeReserved, IsAvailable, AvailableItems, UsageRules)
 VALUES
 ('Facility1', 'Gym', 'StreetName1', 1, 8200, 0, 1, 'Benchpress, squatrack, dumbells', 'No crossfit'),
@@ -37,6 +37,11 @@ VALUES
 (2, 2),
 (4, 3)
 
+INSERT INTO [Maintenances]
+(Describtion, Date, FacilityId)
+VALUES
+('Fixed all the broken stuff','2022-01-03 00:00:00', 7)
+('Extingished all the fire','2022-01-04 00:17:42', 6)
 UPDATE [Facilities]
 SET IsAvailable = 0
 WHERE Facilities.Id = 5;

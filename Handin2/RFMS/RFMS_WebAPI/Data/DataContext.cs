@@ -15,4 +15,5 @@ public class DataContext : DbContext
 
     public DbSet<Facility> Facilities { get; set; } = default!;
     public DbSet<Reservation> Reservations { get; set; } = default!;
+    public DbSet<Maintenance> Maintenances { get; set; }
 }
