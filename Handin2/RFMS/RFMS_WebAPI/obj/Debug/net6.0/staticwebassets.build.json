@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "0JhshqijMcYCjC2Y4Lm78vgFlJAVk+3SrhnQ0v8/nwk=",
+  "Source": "RFMS_WebAPI",
+  "BasePath": "_content/RFMS_WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

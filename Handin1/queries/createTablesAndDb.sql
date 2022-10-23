@@ -1,7 +1,8 @@
-CREATE DATABASE RFM_system_au632826
+CREATE DATABASE RFM_system_au632826_v2
+
 USE RFM_system_au632826
 
-CREATE TABLE [Citizen]
+CREATE TABLE [Citizens]
 (
     CitizenID INT PRIMARY KEY,
     FirstName CHAR(100),
@@ -17,7 +18,7 @@ CREATE TABLE [Citizen]
     CVR INT DEFAULT NULL,
 )
 
-CREATE TABLE [Facility]
+CREATE TABLE [Facilities]
 (
     FacilityID INT PRIMARY KEY,
     Name CHAR(100), 
@@ -38,7 +39,7 @@ CREATE TABLE [Facility]
     UsageRules CHAR(150)
 )
 
-CREATE TABLE [Booking]
+CREATE TABLE [Bookings]
 (
     BookingID INT PRIMARY KEY,
     BookingStartTime DATETIME,
@@ -48,14 +49,14 @@ CREATE TABLE [Booking]
     FacilityID INT FOREIGN KEY REFERENCES Facility(FacilityID)
 )
 
-CREATE TABLE [Reservation]
+CREATE TABLE [Reservations]
 (
     ReservationID INT PRIMARY KEY,
     ReservedByID INT FOREIGN KEY REFERENCES Citizen(CitizenID),
     BookingID INT FOREIGN KEY REFERENCES Booking(BookingID)
 )
 
-CREATE TABLE [MaintanceIntervention]
+CREATE TABLE [MaintanceInterventions]
 (
     MaintanceID INT PRIMARY KEY,
     MaintanceDescription CHAR(150),
