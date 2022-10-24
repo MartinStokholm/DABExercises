@@ -3,12 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RFMS_WebAPI.Models
 {
-    public class Booking
+    public class BookingWithParticipantsCPR
     {
-        public Booking()
-        {
-            this.Citizens = new HashSet<Citizen>();
-        }
+  
         public long Id { get; set; }
         public DateTime BookingStartTime { get; set; } 
         public DateTime BookingEndTime { get; set; }
@@ -18,7 +15,7 @@ namespace RFMS_WebAPI.Models
         public long FacilityId { get; set; }
         public Facility Facility { get; set; } = new Facility();
         
-        public virtual ICollection<Citizen> Citizens { get; set; } = new List<Citizen>();
+        public virtual List<CitizenCPR> CitizensCPR { get; set; } = new List<CitizenCPR>();
      
     }
 }

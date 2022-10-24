@@ -21,14 +21,27 @@ namespace RFMS_WebAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("{bookingId}")]
-        public async Task<ActionResult<Booking>> GetBooking(long bookingId)
+        [HttpGet("WithParticipantsCPR/{bookingId}")]
+        public async Task<ActionResult<BookingWithParticipantsCPR>> GetBookingParticipantsCPR(long bookingId)
         {
             var dbBooking = await _context.Bookings.FindAsync(bookingId);
             if (dbBooking == null) { return NotFound("Booking could not be found"); }
             _context.Entry(dbBooking).Reference(b => b.Facility).Load();
-            
-            return Ok(dbBooking);
+            _context.Entry(dbBooking).Collection(b => b.Citizens).Load();
+
+            var bookingWithParticipantsCPR = dbBooking.Adapt<BookingWithParticipantsCPR>();
+
+            foreach (var citizen in dbBooking.Citizens)
+            {
+                var citizenCPR = new CitizenCPR
+                {
+                    CitizenId = citizen.Id,
+                    CPR = citizen.CPR
+                };
+                bookingWithParticipantsCPR.CitizensCPR.Add(citizenCPR);
+            }
+
+            return Ok(bookingWithParticipantsCPR);
         }
 
     }

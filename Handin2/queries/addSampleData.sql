@@ -12,6 +12,7 @@ VALUES
 ('Super', 'Man', 'superman@mail.com', 69696969, 'Business', 123123),
 ('Super', 'Woman', 'superwoman@mail.com', 42042069, 'Business', 321321)
 
+
 INSERT INTO [Facilities]
 (Name, Kind, StreetName, StreetNumber, ZipCode, CanBeReserved, IsAvailable, AvailableItems, UsageRules)
 VALUES
@@ -30,6 +31,15 @@ VALUES
 ('2022-01-02 00:00:00', '2022-01-03 00:00:00', 4, 'We are playing tennis', 5),
 ('2022-01-03 00:00:00', '2022-01-04 00:00:00', 12, 'We are making fire', 6)
 
+INSERT INTO [BookingCitizen]
+(BookingsId, CitizensId)
+VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 4),
+(2, 5)
+
 INSERT INTO [Reservations]
 (CitizenId, BookingID)
 VALUES
@@ -40,8 +50,9 @@ VALUES
 INSERT INTO [Maintenances]
 (Describtion, Date, FacilityId)
 VALUES
-('Fixed all the broken stuff','2022-01-03 00:00:00', 7)
+('Fixed all the broken stuff','2022-01-03 00:00:00', 7),
 ('Extingished all the fire','2022-01-04 00:17:42', 6)
+
 UPDATE [Facilities]
 SET IsAvailable = 0
 WHERE Facilities.Id = 5;
@@ -54,3 +65,16 @@ UPDATE [Facilities]
 SET IsAvailable = 0
 WHERE Facilities.Id = 7;
 
+UPDATE [Citizens]
+SET CPR = 1122331232
+WHERE Citizens.Id = 1;
+
+
+UPDATE [Citizens]
+SET CPR = 2233111111
+WHERE Citizens.Id = 2;
+
+
+UPDATE [Citizens]
+SET CPR = 1212212122
+WHERE Citizens.Id = 4;
