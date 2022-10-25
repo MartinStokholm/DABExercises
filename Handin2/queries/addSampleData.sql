@@ -78,3 +78,11 @@ WHERE Citizens.Id = 2;
 UPDATE [Citizens]
 SET CPR = 1212212122
 WHERE Citizens.Id = 4;
+
+UPDATE [Citizens]
+SET CPR = 1211111122
+WHERE Citizens.Id = 5;
+
+UPDATE [Facilities]
+SET Latitude = 5.420;
+SET Longitude = 2.420;

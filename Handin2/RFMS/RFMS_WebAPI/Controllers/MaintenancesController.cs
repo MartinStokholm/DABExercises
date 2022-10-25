@@ -25,6 +25,10 @@ namespace RFMS_WebAPI.Controllers
         {
             var dbMaintenances = await _context.Maintenances.ToListAsync();
             if (dbMaintenances == null) { return NotFound("No maintenance history could be found"); }
+            foreach (var item in dbMaintenances)
+            {
+                _context.Entry(item).Reference(m => m.Facility).Load();
+            }
             return Ok(dbMaintenances);
         }
     }

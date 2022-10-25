@@ -44,9 +44,9 @@ namespace RFMS_WebAPI.Controllers
                 reservationDetails.BookingEndTime = item.Booking.BookingEndTime;
                 reservationDetails.Name = item.Booking.Facility.Name;
                 reservationDetails.Kind = item.Booking.Facility.Kind;
-                reservationDetails.StreetName = item.Booking.Facility.StreetName;
-                reservationDetails.StreetNumber = item.Booking.Facility.StreetNumber;
-                reservationDetails.ZipCode = item.Booking.Facility.ZipCode;
+                reservationDetails.Latitude = item.Booking.Facility.Latitude;
+                reservationDetails.Longitude = item.Booking.Facility.Longitude;
+               
 
                 reservationDetailsList.Add(reservationDetails);
             }
