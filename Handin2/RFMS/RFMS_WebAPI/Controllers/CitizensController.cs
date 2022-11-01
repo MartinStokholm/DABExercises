@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,11 +20,12 @@ namespace RFMS_WebAPI.Controllers
         {
             _context = context;
         }
-
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Citizen>>> GetCitizens()
+        public async Task<ActionResult<List<CitizenNoBooking>>> GetCitizens()
         {
-            return Ok(await _context.Citizens.ToListAsync());
+            var dbCitizens = await _context.Citizens.ToListAsync();
+            return Ok(dbCitizens.Adapt<List<CitizenNoBooking>>());
         }
     }
 }
