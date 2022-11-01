@@ -6,7 +6,7 @@ namespace RFMS_WebAPI.Models
     {
         public string FirstName { get; set; } = "";
         public string LastName { get; set; } = "";
-        public int? CVR { get; set; }
+        public long CPR { get; set; }
         
         public DateTime BookingStartTime { get; set; }
         public DateTime BookingEndTime { get; set; }

@@ -14,7 +14,6 @@ namespace RFMS_WebAPI.Models
         [ForeignKey("Id")]
         public long FacilityId { get; set; }
         public Facility Facility { get; set; } = new Facility();
-        
         public virtual List<CitizenCPR> CitizensCPR { get; set; } = new List<CitizenCPR>();
      
     }
