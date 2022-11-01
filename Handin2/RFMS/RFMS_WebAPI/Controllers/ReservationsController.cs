@@ -39,7 +39,7 @@ namespace RFMS_WebAPI.Controllers
 
                 reservationDetails.FirstName = item.Citizen.FirstName;
                 reservationDetails.LastName = item.Citizen.LastName;
-                reservationDetails.CVR = item.Citizen.CVR;
+                reservationDetails.CPR = item.Citizen.CPR;
                 reservationDetails.BookingStartTime = item.Booking.BookingStartTime;
                 reservationDetails.BookingEndTime = item.Booking.BookingEndTime;
                 reservationDetails.Name = item.Booking.Facility.Name;
