@@ -33,7 +33,7 @@ namespace RFMS_WebAPI.Migrations
 
                     b.HasIndex("CitizensId");
 
-                    b.ToTable("BookingCitizen");
+                    b.ToTable("BookingCitizen", (string)null);
                 });
 
             modelBuilder.Entity("RFMS_WebAPI.Models.Booking", b =>
@@ -64,7 +64,7 @@ namespace RFMS_WebAPI.Migrations
 
                     b.HasIndex("FacilityId");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Bookings", (string)null);
                 });
 
             modelBuilder.Entity("RFMS_WebAPI.Models.Citizen", b =>
@@ -103,7 +103,7 @@ namespace RFMS_WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Citizens");
+                    b.ToTable("Citizens", (string)null);
                 });
 
             modelBuilder.Entity("RFMS_WebAPI.Models.Facility", b =>
@@ -144,7 +144,7 @@ namespace RFMS_WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Facilities");
+                    b.ToTable("Facilities", (string)null);
                 });
 
             modelBuilder.Entity("RFMS_WebAPI.Models.Maintenance", b =>
@@ -169,7 +169,7 @@ namespace RFMS_WebAPI.Migrations
 
                     b.HasIndex("FacilityId");
 
-                    b.ToTable("Maintenances");
+                    b.ToTable("Maintenances", (string)null);
                 });
 
             modelBuilder.Entity("RFMS_WebAPI.Models.Reservation", b =>
@@ -192,7 +192,7 @@ namespace RFMS_WebAPI.Migrations
 
                     b.HasIndex("CitizenId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("BookingCitizen", b =>

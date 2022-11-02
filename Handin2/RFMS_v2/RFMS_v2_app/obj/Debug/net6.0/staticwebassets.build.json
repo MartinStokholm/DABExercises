@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "PHZhK0IRr2GJk9mvqg9MnVvSN4gK1b1nTqUV9Hhodbs=",
+  "Source": "RFMS_v2_app",
+  "BasePath": "_content/RFMS_v2_app",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
