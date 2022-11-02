@@ -13,6 +13,7 @@
         public string PhoneNumber { get; set; } = "";
         public string Category { get; set; } = "";
         public long? CVR { get; set; }
+        public long CPR { get; set; }
 
         public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RFMS_v2_app.Models;
 
@@ -19,6 +14,16 @@ namespace RFMS_v2_app.Controllers
         {
             _context = context;
         }
-
+        [HttpGet("History")]
+        public async Task<ActionResult<List<MaintenanceIntervention>>> GetMaintenanceHistory()
+        {
+            var dbMaintenanceIntervention = await _context.MaintenanceInterventions.ToListAsync();
+            if (dbMaintenanceIntervention == null) { return NotFound("No maintenance history could be found"); }
+            foreach (var item in dbMaintenanceIntervention)
+            {
+                _context.Entry(item).Reference(m => m.Facility).Load();
+            }
+            return Ok(dbMaintenanceIntervention);
+        }
     }
 }

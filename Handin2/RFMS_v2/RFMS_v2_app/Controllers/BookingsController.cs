@@ -21,28 +21,28 @@ namespace RFMS_v2_app.Controllers
         {
             _context = context;
         }
-      
-        //[HttpGet("WithParticipantsCPR/{bookingId}")]
-        //public async Task<ActionResult<BookingWithCitizenCPRDto>> GetBookingParticipantsCPR(long bookingId)
-        //{
-        //    var dbBooking = await _context.Bookings.FindAsync(bookingId);
-        //    if (dbBooking == null) { return NotFound("Booking could not be found"); }
-        //    _context.Entry(dbBooking).Reference(b => b.Facility).Load();
-        //    _context.Entry(dbBooking).Collection(b => b.Citizens).Load();
 
-        //    var bookingWithParticipantsCPR = dbBooking.Adapt<BookingWithCitizenCPRDto>();
+        [HttpGet("WithParticipantsCPR/{bookingId}")]
+        public async Task<ActionResult<BookingWithCitizenCPRDto>> GetBookingParticipantsCPR(long bookingId)
+        {
+            var dbBooking = await _context.Bookings.FindAsync(bookingId);
+            if (dbBooking == null) { return NotFound("Booking could not be found"); }
+            _context.Entry(dbBooking).Reference(b => b.Facility).Load();
+            _context.Entry(dbBooking).Collection(b => b.Citizens).Load();
 
-        //    foreach (var citizen in dbBooking.Citizens)
-        //    {
-        //        var citizenCPR = new CitizenCPR
-        //        {
-        //            CitizenId = citizen.Id,
-        //            CPR = citizen.CPR
-        //        };
-        //        bookingWithParticipantsCPR.CitizensCPR.Add(citizenCPR);
-        //    }
+            var bookingWithParticipantsCPR = dbBooking.Adapt<BookingWithCitizenCPRDto>();
 
-        //    return Ok(bookingWithParticipantsCPR);
-        //}
+            foreach (var citizen in dbBooking.Citizens)
+            {
+                var citizenCPR = new CitizenCPRDto
+                {
+                    CitizenId = citizen.Id,
+                    CPR = citizen.CPR
+                };
+                bookingWithParticipantsCPR.CitizensCPR.Add(citizenCPR);
+            }
+
+            return Ok(bookingWithParticipantsCPR);
+        }
     }
 }
