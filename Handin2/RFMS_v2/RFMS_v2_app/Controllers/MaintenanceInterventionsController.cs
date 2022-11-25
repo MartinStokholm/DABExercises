@@ -21,7 +21,7 @@ namespace RFMS_v2_app.Controllers
             if (dbMaintenanceIntervention == null) { return NotFound("No maintenance history could be found"); }
             foreach (var item in dbMaintenanceIntervention)
             {
-                _context.Entry(item).Reference(m => m.Facility).Load();
+                m => m.Facility).Load();
             }
             return Ok(dbMaintenanceIntervention);
         }
