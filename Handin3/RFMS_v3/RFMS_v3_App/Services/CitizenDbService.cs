@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using RFMS_v3_App.Models;
 using Microsoft.AspNetCore.Mvc;
+using RFMS_v3_App.Models.Dto;
 
 namespace RFMS_v3_App.Services;
 
@@ -20,8 +21,8 @@ public class CitizenDbService
     {
         return await _citizenCollection.Find(citizen => true).ToListAsync();
     }
-    
-    public async Task<Citizen> Get(string id)
+
+    public async Task<Citizen> GetAsync(string id)
     {
         return await _citizenCollection.Find(citizen => citizen.Id == id).FirstOrDefaultAsync();
     }
@@ -31,19 +32,39 @@ public class CitizenDbService
         _citizenCollection.InsertOne(citizen);
         return citizen;
     }
-    
-    public async Task<Citizen> Update(string id, Citizen citizenIn)
+
+    public async Task CreateAsync(CitizenNoBookingsDto citizen)
+    {
+
+        var citizenInsert = new Citizen
+        {
+            FirstName = citizen.FirstName,
+            LastName = citizen.LastName,
+            Email = citizen.Email,
+            Category = citizen.Category,
+            CVR = citizen.CVR,
+            PhoneNumber = citizen.PhoneNumber,
+        };
+
+        await _citizenCollection.InsertOneAsync(citizenInsert);
+        return;
+    }
+
+
+    public async Task<Citizen> UpdateAsync(string id, Citizen citizenIn)
     {
         await _citizenCollection.ReplaceOneAsync(citizen => citizen.Id == id, citizenIn);
         return citizenIn;
     }
 
-    public async Task<DeleteResult> Remove(Citizen citizenIn)
+
+
+    public async Task<DeleteResult> RemoveAsync(Citizen citizenIn)
     {
         return await _citizenCollection.DeleteOneAsync(citizen => citizen.Id == citizenIn.Id);
     }
 
-    public async Task<DeleteResult> Remove(string id)
+    public async Task<DeleteResult> RemoveAsync(string id)
     {
         return await _citizenCollection.DeleteOneAsync(citizen => citizen.Id == id);
     }
