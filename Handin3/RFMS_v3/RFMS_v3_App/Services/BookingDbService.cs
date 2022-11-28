@@ -8,44 +8,44 @@ namespace RFMS_v3_App.Services;
 
 public class BookingDbService
 {
-    private readonly IMongoCollection<Citizen> _bookingService;
+    private readonly IMongoCollection<Booking> _bookingService;
 
     public BookingDbService(IOptions<MongoDbSettings> mongoDBSettings)
     {
         MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
-        _bookingService = database.GetCollection<Citizen>(mongoDBSettings.Value.CollectionName);
+        _bookingService = database.GetCollection<Booking>(mongoDBSettings.Value.CollectionName);
     }
-    public async Task<List<Citizen>> GetAsync()
+    public async Task<List<Booking>> GetAsync()
     {
-        return await _bookingService.Find(citizen => true).ToListAsync();
-    }
-    
-    public async Task<Citizen> Get(string id)
-    {
-        return await _bookingService.Find(citizen => citizen.Id == id).FirstOrDefaultAsync();
+        return await _bookingService.Find(booking => true).ToListAsync();
     }
 
-    public Citizen Create(Citizen citizen)
+    public async Task<Booking> Get(string id)
     {
-        _bookingService.InsertOne(citizen);
-        return citizen;
-    }
-    
-    public async Task<Citizen> Update(string id, Citizen citizenIn)
-    {
-        await _bookingService.ReplaceOneAsync(citizen => citizen.Id == id, citizenIn);
-        return citizenIn;
+        return await _bookingService.Find(booking => booking.Id == id).FirstOrDefaultAsync();
     }
 
-    public async Task<DeleteResult> Remove(Citizen citizenIn)
+    public Booking Create(Booking booking)
     {
-        return await _bookingService.DeleteOneAsync(citizen => citizen.Id == citizenIn.Id);
+        _bookingService.InsertOne(booking);
+        return booking;
+    }
+
+    public async Task<Booking> Update(string id, Booking bookingIn)
+    {
+        await _bookingService.ReplaceOneAsync(v => booking.Id == id, bookingIn);
+        return bookingIn;
+    }
+
+    public async Task<DeleteResult> Remove(Booking bookingServiceIn)
+    {
+        return await _bookingService.DeleteOneAsync(booking => booking.Id == bookingServiceIn.Id);
     }
 
     public async Task<DeleteResult> Remove(string id)
     {
-        return await _bookingService.DeleteOneAsync(citizen => citizen.Id == id);
+        return await _bookingService.DeleteOneAsync(booking => booking.Id == id);
     }
 
 

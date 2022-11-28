@@ -8,44 +8,44 @@ namespace RFMS_v3_App.Services;
 
 public class ReservationDbService
 {
-    private readonly IMongoCollection<Citizen> _reservationCollection;
+    private readonly IMongoCollection<Reservation> _reservationCollection;
 
     public ReservationDbService(IOptions<MongoDbSettings> mongoDBSettings)
     {
         MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
-        _reservationCollection = database.GetCollection<Citizen>(mongoDBSettings.Value.CollectionName);
+        _reservationCollection = database.GetCollection<Reservation>(mongoDBSettings.Value.CollectionName);
     }
-    public async Task<List<Citizen>> GetAsync()
+    public async Task<List<Reservation>> GetAsync()
     {
-        return await _reservationCollection.Find(citizen => true).ToListAsync();
-    }
-    
-    public async Task<Citizen> Get(string id)
-    {
-        return await _reservationCollection.Find(citizen => citizen.Id == id).FirstOrDefaultAsync();
+        return await _reservationCollection.Find(reservation => true).ToListAsync();
     }
 
-    public Citizen Create(Citizen citizen)
+    public async Task<Reservation> Get(string id)
     {
-        _reservationCollection.InsertOne(citizen);
-        return citizen;
-    }
-    
-    public async Task<Citizen> Update(string id, Citizen citizenIn)
-    {
-        await _reservationCollection.ReplaceOneAsync(citizen => citizen.Id == id, citizenIn);
-        return citizenIn;
+        return await _reservationCollection.Find(reservation => reservation.Id == id).FirstOrDefaultAsync();
     }
 
-    public async Task<DeleteResult> Remove(Citizen citizenIn)
+    public Reservation Create(Reservation reservation)
     {
-        return await _reservationCollection.DeleteOneAsync(citizen => citizen.Id == citizenIn.Id);
+        _reservationCollection.InsertOne(reservation);
+        return reservation;
+    }
+
+    public async Task<Reservation> Update(string id, Reservation reservationIn)
+    {
+        await _reservationCollection.ReplaceOneAsync(reservation => reservation.Id == id, reservationIn);
+        return reservationIn;
+    }
+
+    public async Task<DeleteResult> Remove(Reservation citizenIn)
+    {
+        return await _reservationCollection.DeleteOneAsync(reservation => reservation.Id == citizenIn.Id);
     }
 
     public async Task<DeleteResult> Remove(string id)
     {
-        return await _reservationCollection.DeleteOneAsync(citizen => citizen.Id == id);
+        return await _reservationCollection.DeleteOneAsync(reservation => reservation.Id == id);
     }
 
 

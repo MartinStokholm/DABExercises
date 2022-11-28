@@ -3,12 +3,13 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using RFMS_v3_App.Models;
 using Microsoft.AspNetCore.Mvc;
+using RFMS_v3_App.Models.Dto;
 
 namespace RFMS_v3_App.Services;
 
 public class FacilityDbService
 {
-    private readonly IMongoCollection<Citizen> _facilityCollection;
+    private readonly IMongoCollection<Facility> _facilityCollection;
 
     public FacilityDbService(IOptions<MongoDbSettings> mongoDBSettings)
     {
@@ -16,36 +17,50 @@ public class FacilityDbService
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
         _facilityCollection = database.GetCollection<Citizen>(mongoDBSettings.Value.CollectionName);
     }
-    public async Task<List<Citizen>> GetAsync()
+    public async Task<List<Facility>> GetAsync()
     {
         return await _facilityCollection.Find(citizen => true).ToListAsync();
     }
-    
-    public async Task<Citizen> Get(string id)
+
+    public async Task<Facility> Get(string id)
     {
         return await _facilityCollection.Find(citizen => citizen.Id == id).FirstOrDefaultAsync();
     }
 
-    public Citizen Create(Citizen citizen)
+    public Facility Create(Facility facility)
     {
-        _facilityCollection.InsertOne(citizen);
-        return citizen;
-    }
-    
-    public async Task<Citizen> Update(string id, Citizen citizenIn)
-    {
-        await _facilityCollection.ReplaceOneAsync(citizen => citizen.Id == id, citizenIn);
-        return citizenIn;
+        _facilityCollection.InsertOne(facility);
+        return facility;
     }
 
-    public async Task<DeleteResult> Remove(Citizen citizenIn)
+
+    public async Task CreateAsync(FacilityAddressAndNameDto facility)
     {
-        return await _facilityCollection.DeleteOneAsync(citizen => citizen.Id == citizenIn.Id);
+
+        var facilityInsert = new Facility
+        {
+            Name = facility.Name,
+            //DTO Dont match yet
+        };
+
+        await _facilityCollection.InsertOneAsync(facilityInsert);
+        return;
     }
 
-    public async Task<DeleteResult> Remove(string id)
+    public async Task<Facility> UpdateAsync(string id, Facility facilityIn)
     {
-        return await _facilityCollection.DeleteOneAsync(citizen => citizen.Id == id);
+        await _facilityCollection.ReplaceOneAsync(facility => facility.Id == id, facilityIn);
+        return facilityIn;
+    }
+
+    public async Task<DeleteResult> RemoveAsync(Facility citizenIn)
+    {
+        return await _facilityCollection.DeleteOneAsync(facility => facility.Id == citizenIn.Id);
+    }
+
+    public async Task<DeleteResult> AsyncRemove(string id)
+    {
+        return await _facilityCollection.DeleteOneAsync(facility => facility.Id == id);
     }
 
 
