@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RFMS_v3_App.Models;
+using RFMS_v3_App.Services;
 
 namespace RFMS_v3_App.Controllers;
 
@@ -7,11 +8,13 @@ namespace RFMS_v3_App.Controllers;
 [ApiController]
 public class MaintenanceInterventionsController : ControllerBase
 {
-
-    public MaintenanceInterventionsController()
+    private readonly MaintainceInterventionDbService _maintainceInterventionDbService;
+ 
+    public MaintenanceInterventionsController(MaintainceInterventionDbService maintainceInterventionDbService)
     {
+        _maintainceInterventionDbService = maintainceInterventionDbService;
     }
-    
+
     [HttpGet("History")]
     public async Task<ActionResult<List<MaintenanceIntervention>>> GetMaintenanceHistory()
     {

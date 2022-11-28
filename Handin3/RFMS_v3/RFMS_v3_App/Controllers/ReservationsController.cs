@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RFMS_v3_App.Models.Dto;
+using RFMS_v3_App.Services;
 
 namespace RFMS_v3_App.Controllers;
 
@@ -7,9 +8,11 @@ namespace RFMS_v3_App.Controllers;
 [ApiController]
 public class ReservationsController : ControllerBase
 {
-
-    public ReservationsController()
+    private readonly ReservationDbService _reservationDbService;
+    
+    public ReservationsController(ReservationDbService reservationDbService)
     {
+        _reservationDbService = reservationDbService;
     }
     
     [HttpGet("ReservationDetails")]
