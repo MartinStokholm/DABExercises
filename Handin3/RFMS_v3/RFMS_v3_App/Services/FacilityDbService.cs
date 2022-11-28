@@ -33,17 +33,9 @@ public class FacilityDbService
         return facility;
     }
 
-
-    public async Task CreateAsync(FacilityAddressAndNameDto facility)
+    public async Task CreateAsync(Facility facility)
     {
-
-        var facilityInsert = new Facility
-        {
-            Name = facility.Name,
-            //DTO Dont match yet
-        };
-
-        await _facilityCollection.InsertOneAsync(facilityInsert);
+        await _facilityCollection.InsertOneAsync(facility);
         return;
     }
 
