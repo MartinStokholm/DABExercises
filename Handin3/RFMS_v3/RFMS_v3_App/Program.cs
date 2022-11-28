@@ -14,6 +14,10 @@ builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDB"));
 
 builder.Services.AddSingleton<CitizenDbService>();
+builder.Services.AddSingleton<FacilityDbService>();
+builder.Services.AddSingleton<BookingDbService>();
+builder.Services.AddSingleton<ReservationDbService>();
+builder.Services.AddSingleton<MaintainceInterventionDbService>();
 
 
 builder.Services.AddControllers();
