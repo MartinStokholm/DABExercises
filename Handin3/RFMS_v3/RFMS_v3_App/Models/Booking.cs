@@ -4,7 +4,7 @@ namespace RFMS_v3_App.Models;
 
 public class Booking
 {
-    public int Id { get; set; }
+    public string? Id { get; set; }
     public DateTime BookingStartTime { get; set; }
     public DateTime BookingEndTime { get; set; }
     public int NumberOfPeople { get; set; }

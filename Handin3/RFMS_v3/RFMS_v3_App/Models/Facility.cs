@@ -2,13 +2,13 @@
 
 public class Facility
 {
-    public long Id { get; set; }
-    public string Name { get; set; } = "";
-    public string Kind { get; set; } = "";
+    public string? Id { get; set; }
+    public string? Name { get; set; }
+    public string? Kind { get; set; }
     public double Longitude { get; set; }
     public double Latitude { get; set; }
-    public bool CanBeReserved { get; set; } = true;
-    public string UsageRules { get; set; } = "";
+    public bool Reserved { get; set; } = true;
+    public string? UsageRules { get; set; }
     public List<Item> Items { get; set; } = new List<Item>();
 
 }

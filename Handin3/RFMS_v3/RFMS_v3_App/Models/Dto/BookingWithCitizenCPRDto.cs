@@ -4,7 +4,6 @@ namespace RFMS_v3_App.Models.Dto
 {
     public class BookingWithCitizenCPRDto
     {
-        public long Id { get; set; }
         public DateTime BookingStartTime { get; set; }
         public DateTime BookingEndTime { get; set; }
         public int NumberOfPeople { get; set; }

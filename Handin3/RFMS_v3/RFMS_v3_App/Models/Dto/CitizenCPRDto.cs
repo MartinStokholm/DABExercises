@@ -2,7 +2,7 @@
 {
     public class CitizenCPRDto
     {
-        public long CitizenId { get; set; }
+        public string? CitizenId { get; set; }
         public long CPR { get; set; }
 
     }

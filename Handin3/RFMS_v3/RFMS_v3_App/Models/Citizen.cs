@@ -10,15 +10,15 @@ public class Citizen
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
     [BsonElement("FirstName")]
-    public string FirstName { get; set; } = "";
+    public string? FirstName { get; set; }
     [BsonElement("LastName")]
-    public string LastName { get; set; } = "";
+    public string? LastName { get; set; }
     [BsonElement("Email")]
-    public string Email { get; set; } = "";
+    public string? Email { get; set; }
     [BsonElement("PhoneNumber")]
-    public string PhoneNumber { get; set; } = "";
+    public string? PhoneNumber { get; set; }
     [BsonElement("Category")]
-    public string Category { get; set; } = "";
+    public string? Category { get; set; }
     [BsonElement("CVR")]
     public long? CVR { get; set; }
     [BsonElement("CPR")]
