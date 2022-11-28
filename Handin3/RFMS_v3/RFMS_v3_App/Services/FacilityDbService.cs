@@ -15,7 +15,7 @@ public class FacilityDbService
     {
         MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
-        _facilityCollection = database.GetCollection<Citizen>(mongoDBSettings.Value.CollectionName);
+        _facilityCollection = database.GetCollection<Facility>(mongoDBSettings.Value.CollectionName);
     }
     public async Task<List<Facility>> GetAsync()
     {
