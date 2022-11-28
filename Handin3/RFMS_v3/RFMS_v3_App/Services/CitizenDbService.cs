@@ -33,7 +33,7 @@ public class CitizenDbService
         return citizen;
     }
 
-    public async Task CreateAsync(CitizenNoBookingsDto citizen)
+    public async Task CreateAsync(CitizenNoIdDto citizen)
     {
 
         var citizenInsert = new Citizen

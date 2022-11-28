@@ -19,7 +19,7 @@ public class CitizensController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<CitizenNoBookingsDto>>> Get()
+    public async Task<ActionResult<List<CitizenNoIdDto>>> Get()
     {
         var citizens = await _citizenDbService.GetAsync();
 
@@ -27,7 +27,7 @@ public class CitizensController : ControllerBase
     }
 
     [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<CitizenNoBookingsDto>> Get(string id)
+    public async Task<ActionResult<CitizenNoIdDto>> Get(string id)
     {
         var citizen = await _citizenDbService.GetAsync(id);
 
@@ -40,11 +40,11 @@ public class CitizensController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<CitizenNoBookingsDto>> Post([FromBody] CitizenNoBookingsDto citizen)
+    public async Task<ActionResult<CitizenNoIdDto>> Post([FromBody] CitizenNoIdDto citizen)
     {
         await _citizenDbService.CreateAsync(citizen);
-        //return Ok(citizen);
-        return CreatedAtAction(nameof(Get), new { id = citizen.Id }, citizen);
+        return Ok(citizen);
+        //return CreatedAtAction(nameof(Get), new { id = citizen.Id }, citizen);
     }
 
     [HttpPut("{id:length(24)}")]
