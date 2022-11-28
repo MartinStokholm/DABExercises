@@ -34,7 +34,7 @@ public class BookingDbService
 
     public async Task<Booking> Update(string id, Booking bookingIn)
     {
-        await _bookingService.ReplaceOneAsync(v => booking.Id == id, bookingIn);
+        await _bookingService.ReplaceOneAsync(booking => booking.Id == id, bookingIn);
         return bookingIn;
     }
 

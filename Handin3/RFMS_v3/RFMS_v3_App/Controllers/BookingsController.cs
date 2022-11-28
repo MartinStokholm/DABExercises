@@ -13,9 +13,9 @@ public class BookingsController : ControllerBase
     {
         _bookingDbService = bookingDbService;
     }
-    
+
     [HttpGet("WithParticipantsCPR/{bookingId}")]
-    public async Task<ActionResult<BookingWithCitizenCPRDto>> GetBookingParticipantsCPR(long bookingId)
+    public async Task<ActionResult<BookingWithCitizenCPRDto>> GetBookingParticipantsCPR(string bookingId)
     {
         return Ok();
     }
