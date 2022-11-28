@@ -8,7 +8,7 @@ public class Facility
     public double Longitude { get; set; }
     public double Latitude { get; set; }
     public bool CanBeReserved { get; set; } = true;
-    public string Items { get; set; } = "";
     public string UsageRules { get; set; } = "";
+    public List<Item> Items { get; set; } = new List<Item>();
 
 }

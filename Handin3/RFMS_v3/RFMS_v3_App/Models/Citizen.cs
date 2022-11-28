@@ -19,6 +19,8 @@ public class Citizen
     public string PhoneNumber { get; set; } = "";
     [BsonElement("Category")]
     public string Category { get; set; } = "";
+    [BsonElement("CVR")]
     public long? CVR { get; set; }
+    [BsonElement("CPR")]
     public long CPR { get; set; }
 }
