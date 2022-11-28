@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RFMS_v2_app.Models.Dto
+namespace RFMS_v3_App.Models.Dto
 {
     public class BookingWithCitizenCPRDto
     {

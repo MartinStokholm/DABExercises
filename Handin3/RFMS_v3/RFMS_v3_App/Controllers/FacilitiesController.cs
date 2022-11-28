@@ -1,29 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RFMS_v2_app.Models.Dto;
+using RFMS_v3_App.Models.Dto;
+namespace RFMS_v3_App.Controllers;
 
-namespace RFMS_v2_app.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class FacilitiesController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FacilitiesController : ControllerBase
+    public FacilitiesController()
     {
-        public FacilitiesController()
-        {
-            
-        }
-
-        [HttpGet("GPSAndName/")]
-        public async Task<ActionResult<List<FacilityGPSAndNameDto>>> GetAvailableFacilitiesGPSAndName()
-        {
-            return Ok();
-        }
-
-        [HttpGet("GPSAndName/OrderBy/Kind/")]
-        public async Task<ActionResult<List<FacilityGPSAndNameDto>>> GetFacilitiesGPSAndNameOrderedByKind()
-        {
-            return Ok();
-        }
-
-
+        
     }
+
+    [HttpGet("GPSAndName/")]
+    public async Task<ActionResult<List<FacilityGPSAndNameDto>>> GetAvailableFacilitiesGPSAndName()
+    {
+        return Ok();
+    }
+
+    [HttpGet("GPSAndName/OrderBy/Kind/")]
+    public async Task<ActionResult<List<FacilityGPSAndNameDto>>> GetFacilitiesGPSAndNameOrderedByKind()
+    {
+        return Ok();
+    }
+
+
 }

@@ -1,4 +1,4 @@
-﻿namespace RFMS_v2_app.Models.Dto
+﻿namespace RFMS_v3_App.Models.Dto
 {
     public class FacilityGPSAndNameDto
     {
