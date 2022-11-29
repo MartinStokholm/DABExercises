@@ -1,0 +1,109 @@
+[{
+  "_id": "63869af3fd49c1b249d8767f",
+  "Description": "Superman tried to fix the broken swing",
+  "Date": {
+    "$date": {
+      "$numberLong": "1669679311422"
+    }
+  },
+  "Facility": {
+    "_id": {
+      "$oid": "63866f628a60dd2b8f0a4740"
+    },
+    "Name": "Great Green Place",
+    "Kind": "Park",
+    "Longitude": 420,
+    "Latitude": 69,
+    "Reserved": false,
+    "UsageRules": "Be nice",
+    "Items": [
+      {
+        "Name": "Bench",
+        "Amount": 4,
+        "Status": "Working"
+      },
+      {
+        "Name": "Fountain",
+        "Amount": 6,
+        "Status": "Working"
+      },
+      {
+        "Name": "Swing",
+        "Amount": 2,
+        "Status": "1 Broken"
+      }
+    ]
+  }
+},{
+  "_id": "63869b02fd49c1b249d87680",
+  "Description": "Superman tried to fix the broken swing again",
+  "Date": {
+    "$date": {
+      "$numberLong": "1669765711422"
+    }
+  },
+  "Facility": {
+    "_id": {
+      "$oid": "63866f628a60dd2b8f0a4740"
+    },
+    "Name": "Great Green Place",
+    "Kind": "Park",
+    "Longitude": 420,
+    "Latitude": 69,
+    "Reserved": false,
+    "UsageRules": "Be nice",
+    "Items": [
+      {
+        "Name": "Bench",
+        "Amount": 4,
+        "Status": "Working"
+      },
+      {
+        "Name": "Fountain",
+        "Amount": 6,
+        "Status": "Working"
+      },
+      {
+        "Name": "Swing",
+        "Amount": 2,
+        "Status": "1 Broken"
+      }
+    ]
+  }
+},{
+  "_id": "63869b18fd49c1b249d87681",
+  "Description": "Superman tried to fix the broken swing once more, third time was the charm",
+  "Date": {
+    "$date": {
+      "$numberLong": "1669765711422"
+    }
+  },
+  "Facility": {
+    "_id": {
+      "$oid": "63866f628a60dd2b8f0a4740"
+    },
+    "Name": "Great Green Place",
+    "Kind": "Park",
+    "Longitude": 420,
+    "Latitude": 69,
+    "Reserved": false,
+    "UsageRules": "Be nice",
+    "Items": [
+      {
+        "Name": "Bench",
+        "Amount": 4,
+        "Status": "Working"
+      },
+      {
+        "Name": "Fountain",
+        "Amount": 6,
+        "Status": "Working"
+      },
+      {
+        "Name": "Swing",
+        "Amount": 2,
+        "Status": "1 Broken"
+      }
+    ]
+  }
+}]
