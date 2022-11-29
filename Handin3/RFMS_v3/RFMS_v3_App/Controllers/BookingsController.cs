@@ -15,12 +15,20 @@ public class BookingsController : ControllerBase
         _bookingDbService = bookingDbService;
     }
 
-    [HttpGet("WithParticipantsCPR/{bookingId}")]
-    public async Task<ActionResult<Booking>> GetBookingParticipantsCPR(string bookingId)
+    [HttpGet("WithParticipantsCPR")]
+    public async Task<ActionResult<List<BookingWithCitizensCPR>>> GetBookingsWithCitizensCPR()
     {
-        
-        return Ok();
+        var bookings = await _bookingDbService.GetBookingsWithCitizensCPRAsync();
+        return Ok(bookings);
     }
+    
+    [HttpGet("Details")]
+    public async Task<ActionResult<BookingDetailsDto>> GetBookingDetailsAsync()
+    {
+        var result = await _bookingDbService.GetBookingDetailsAsync();
+        return Ok(result);
+    }
+
     [HttpGet]
     public async Task<ActionResult<List<Booking>>> Get()
     {

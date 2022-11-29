@@ -30,10 +30,43 @@ public class BookingDbService
     {
         return await _bookingService.Find(booking => booking.Id == id).FirstOrDefaultAsync();
     }
-
-    public async Task<Booking> GetBookingParticipantsCPRAsync(string id)
+    
+    public async Task<List<BookingDetailsDto>> GetBookingDetailsAsync()
     {
-        return await _bookingService.Find(booking => booking.Id == id).FirstOrDefaultAsync();
+        var bookings = await _bookingService.Find(booking => true).ToListAsync();
+
+        var result = new List<BookingDetailsDto>();
+
+        foreach (var booking in bookings) 
+        {
+            result.Add(new BookingDetailsDto
+            {
+                FacilityName = booking.Facility.Name,
+                Citizen = booking.Citizen,
+                BookingStartTime = booking.BookingStartTime,
+                BookingEndTime = booking.BookingEndTime,
+            });
+        }
+        
+        return result;
+    }
+
+    public async Task<List<BookingWithCitizensCPR>> GetBookingsWithCitizensCPRAsync()
+    {
+        var bookings = await _bookingService.Find(booking => true).ToListAsync();
+        var result = new List<BookingWithCitizensCPR>();
+        foreach (var booking in bookings)
+        {
+            result.Add(new BookingWithCitizensCPR
+            {
+                Id = booking.Id,
+                BookingStartTime = booking.BookingStartTime,
+                BookingEndTime = booking.BookingEndTime,
+                NumberOfPeople = booking.NumberOfPeople,
+                CitizensCPR = booking.CitizensCPR,
+            });
+        }
+        return result;
     }
 
     public async Task<Booking> CreateAsync(BookingCreateDto booking)

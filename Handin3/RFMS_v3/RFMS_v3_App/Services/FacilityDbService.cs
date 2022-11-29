@@ -21,6 +21,7 @@ public class FacilityDbService
     {
         var facilitiesSorted = await _facilityCollection
             .Find(facility => true)
+            
             .SortBy(f => f.Kind)
             .ToListAsync();
         
@@ -31,6 +32,7 @@ public class FacilityDbService
             Longitude = facility.Longitude,
             Kind = facility.Kind,
             
+
         })        
         .ToList();
         
@@ -52,7 +54,6 @@ public class FacilityDbService
                 Name = name,
                 Latitude = facility.Latitude,
                 Longitude = facility.Longitude,
-                Items = facility.Items
             });
         }
 

@@ -18,7 +18,7 @@ public class FacilitiesController : ControllerBase
     }
 
     [HttpGet("GPSAndName/")]
-    public async Task<ActionResult<List<FacilityGPSAndNameDto>>> GetAvailableFacilitiesGPSAndName()
+    public async Task<ActionResult<List<FacilityGPSNameAndKindDto>>> GetAvailableFacilitiesGPSAndName()
     {
         return Ok(await _facilityDbService.GetAvailableFacilitiesGPSAndNameAsync());
     }

@@ -6,6 +6,5 @@
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string Kind { get; set; } = "";
-        public List<Item> Items { get; set; } = new List<Item>();
     }
 }
