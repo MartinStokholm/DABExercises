@@ -17,14 +17,24 @@ public class FacilityDbService
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
         _facilityCollection = database.GetCollection<Facility>("FacilitiesCollection");
     }
-    public async Task<List<Facility>> GetFacilitiesOrderByKindAsync()
+    public async Task<List<FacilityGPSNameAndKindDto>> GetFacilitiesOrderByKindAsync()
     {
         var facilitiesSorted = await _facilityCollection
             .Find(facility => true)
             .SortBy(f => f.Kind)
             .ToListAsync();
-       
-        return facilitiesSorted;
+        
+        var result = facilitiesSorted.Select(facility => new FacilityGPSNameAndKindDto
+        {
+            Name = facility.Name,
+            Latitude = facility.Latitude,
+            Longitude = facility.Longitude,
+            Kind = facility.Kind,
+            
+        })        
+        .ToList();
+        
+        return result;
     }
     public async Task<List<FacilityGPSAndNameDto>> GetAvailableFacilitiesGPSAndNameAsync()
     {
