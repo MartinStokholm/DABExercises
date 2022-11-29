@@ -18,15 +18,15 @@ public class FacilitiesController : ControllerBase
     }
 
     [HttpGet("GPSAndName/")]
-    public async Task<ActionResult<List<Facility>>> GetAvailableFacilitiesGPSAndName()
+    public async Task<ActionResult<List<FacilityGPSAndNameDto>>> GetAvailableFacilitiesGPSAndName()
     {
-        return Ok();
+        return Ok(await _facilityDbService.GetAvailableFacilitiesGPSAndNameAsync());
     }
 
     [HttpGet("GPSAndName/OrderBy/Kind/")]
     public async Task<ActionResult<List<Facility>>> GetFacilitiesGPSAndNameOrderedByKind()
     {
-        return Ok();
+        return Ok(await _facilityDbService.GetFacilitiesOrderByKindAsync());
     }
 
     [HttpGet]
@@ -51,11 +51,10 @@ public class FacilitiesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Facility>> Post([FromBody] FacilityNoIdDto facility)
+    public async Task<ActionResult<FacilityNoIdDto>> Post([FromBody] FacilityNoIdDto facility)
     {
         await _facilityDbService.CreateAsync(facility);
-        //return Ok(citizen);
-        return CreatedAtAction(nameof(Get), new { id = facility.Id }, facility);
+        return Ok(facility);
     }
 
 

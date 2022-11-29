@@ -1,0 +1,147 @@
+[{
+  "_id": {
+    "$oid": "638657e5422855fcd29a9bef"
+  },
+  "FirstName": "Bob",
+  "LastName": "The Builder",
+  "Email": "builderbob@mail.com",
+  "PhoneNumber": "22334455",
+  "Category": "business",
+  "CVR": 123213,
+  "CPR": 1212001234
+},{
+  "_id": {
+    "$oid": "63865811422855fcd29a9bf0"
+  },
+  "FirstName": "Ann",
+  "LastName": "The Builder",
+  "Email": "builderann@mail.com",
+  "PhoneNumber": "11334455",
+  "Category": "private",
+  "CVR": null,
+  "CPR": 1212001235
+},{
+  "_id": {
+    "$oid": "63865834422855fcd29a9bf1"
+  },
+  "FirstName": "John",
+  "LastName": "Doe",
+  "Email": "johndoe@mail.com",
+  "PhoneNumber": "99334455",
+  "Category": "private",
+  "CVR": null,
+  "CPR": 1212001236
+},{
+  "_id": {
+    "$oid": "638667112b3031ab19866a75"
+  },
+  "Name": "Great Green Place",
+  "Kind": "Park",
+  "Longitude": 420,
+  "Latitude": 69,
+  "Reserved": false,
+  "UsageRules": "Be nice",
+  "Items": [
+    {
+      "Name": "Bench",
+      "Amount": 4,
+      "Status": "Working"
+    },
+    {
+      "Name": "Fountain",
+      "Amount": 6,
+      "Status": "Working"
+    },
+    {
+      "Name": "Swing",
+      "Amount": 2,
+      "Status": "1 Broken"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "638667572b3031ab19866a76"
+  },
+  "Name": "Small Blue Place",
+  "Kind": "Park",
+  "Longitude": 666,
+  "Latitude": 999,
+  "Reserved": false,
+  "UsageRules": "Be blue",
+  "Items": [
+    {
+      "Name": "Bench",
+      "Amount": 1,
+      "Status": "Working"
+    },
+    {
+      "Name": "Fountain",
+      "Amount": 10,
+      "Status": "Working"
+    },
+    {
+      "Name": "Swing",
+      "Amount": 8,
+      "Status": "Working"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "638667c92b3031ab19866a77"
+  },
+  "Name": "BigGainz",
+  "Kind": "Gym",
+  "Longitude": 42,
+  "Latitude": 17,
+  "Reserved": false,
+  "UsageRules": "Be stronk, No crossfit allowed",
+  "Items": [
+    {
+      "Name": "Benchpress",
+      "Amount": 4,
+      "Status": "Working"
+    },
+    {
+      "Name": "Barbells",
+      "Amount": 10,
+      "Status": "Working"
+    },
+    {
+      "Name": "Tren",
+      "Amount": 9001,
+      "Status": "Working"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "638668802b3031ab19866a78"
+  },
+  "Name": "The Cozy Cabin",
+  "Kind": "Shelter",
+  "Longitude": 11,
+  "Latitude": 22,
+  "Reserved": true,
+  "UsageRules": "Just chill",
+  "Items": [
+    {
+      "Name": "Food",
+      "Amount": 4,
+      "Status": "Eatable"
+    },
+    {
+      "Name": "Pot",
+      "Amount": 2,
+      "Status": "Working"
+    },
+    {
+      "Name": "Pan",
+      "Amount": 1,
+      "Status": "Working"
+    },
+    {
+      "Name": "Cutlery",
+      "Amount": 8,
+      "Status": "Working"
+    }
+  ]
+}]

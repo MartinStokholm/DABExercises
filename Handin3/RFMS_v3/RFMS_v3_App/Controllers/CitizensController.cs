@@ -44,7 +44,6 @@ public class CitizensController : ControllerBase
     {
         await _citizenDbService.CreateAsync(citizen);
         return Ok(citizen);
-        //return CreatedAtAction(nameof(Get), new { id = citizen.Id }, citizen);
     }
 
     [HttpDelete("{id:length(24)}")]

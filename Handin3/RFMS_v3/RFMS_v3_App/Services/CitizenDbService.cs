@@ -15,7 +15,7 @@ public class CitizenDbService
     {
         MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
-        _citizenCollection = database.GetCollection<Citizen>(mongoDBSettings.Value.CollectionName);
+        _citizenCollection = database.GetCollection<Citizen>("CitizenCollection");
     }
     public async Task<List<Citizen>> GetAsync()
     {
@@ -43,6 +43,7 @@ public class CitizenDbService
             Email = citizen.Email,
             Category = citizen.Category,
             CVR = citizen.CVR,
+            CPR = citizen.CPR,
             PhoneNumber = citizen.PhoneNumber,
         };
 

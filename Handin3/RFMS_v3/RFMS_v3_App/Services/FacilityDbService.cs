@@ -15,16 +15,49 @@ public class FacilityDbService
     {
         MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
-        _facilityCollection = database.GetCollection<Facility>(mongoDBSettings.Value.CollectionName);
+        _facilityCollection = database.GetCollection<Facility>("FacilitiesCollection");
     }
-    public async Task<List<Facility>> GetAsync()
+    public async Task<List<Facility>> GetFacilitiesOrderByKindAsync()
     {
-        return await _facilityCollection.Find(citizen => true).ToListAsync();
+        var facilitiesSorted = await _facilityCollection
+            .Find(facility => true)
+            .SortBy(f => f.Kind)
+            .ToListAsync();
+       
+        return facilitiesSorted;
+    }
+    public async Task<List<FacilityGPSAndNameDto>> GetAvailableFacilitiesGPSAndNameAsync()
+    {
+        var facilitiesSorted = await _facilityCollection
+            .Find(facility => true)
+            .ToListAsync();
+        
+        var result = new List<FacilityGPSAndNameDto>();
+
+        foreach (var facility in facilitiesSorted)
+        {
+            string? name = facility.Name;
+            result.Add(new FacilityGPSAndNameDto
+            {
+                Name = name,
+                Latitude = facility.Latitude,
+                Longitude = facility.Longitude,
+                Items = facility.Items
+            });
+        }
+
+        return result;
     }
 
-    public async Task<Facility> Get(string id)
+
+    public async Task<List<Facility>> GetAsync()
     {
-        return await _facilityCollection.Find(citizen => citizen.Id == id).FirstOrDefaultAsync();
+        return await _facilityCollection.Find(facility => true).ToListAsync();
+    }
+    
+    public async Task<Facility> GetAsync(string id)
+    {
+        return await _facilityCollection.Find(facility => facility.Id == id).FirstOrDefaultAsync();
     }
 
     public Facility Create(Facility facility)
@@ -33,9 +66,19 @@ public class FacilityDbService
         return facility;
     }
 
-    public async Task CreateAsync(Facility facility)
+    public async Task CreateAsync(FacilityNoIdDto facility)
     {
-        await _facilityCollection.InsertOneAsync(facility);
+        var facilityToCreate = new Facility
+        {
+            Name = facility.Name,
+            Kind = facility.Kind,
+            Longitude = facility.Longitude,
+            Latitude = facility.Latitude,
+            Reserved = facility.Reserved,
+            UsageRules = facility.UsageRules,
+            Items = facility.Items
+        };
+        await _facilityCollection.InsertOneAsync(facilityToCreate);
         return;
     }
 
@@ -50,7 +93,7 @@ public class FacilityDbService
         return await _facilityCollection.DeleteOneAsync(facility => facility.Id == citizenIn.Id);
     }
 
-    public async Task<DeleteResult> AsyncRemove(string id)
+    public async Task<DeleteResult> RemoveAsync(string id)
     {
         return await _facilityCollection.DeleteOneAsync(facility => facility.Id == id);
     }
