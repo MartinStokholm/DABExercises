@@ -21,6 +21,7 @@ public class BookingDbService
         _facilityService = database.GetCollection<Facility>("FacilitiesCollection");
         _citizenService = database.GetCollection<Citizen>("CitizenCollection");
     }
+    
     public async Task<List<Booking>> GetAsync()
     {
         return await _bookingService.Find(booking => true).ToListAsync();
@@ -96,23 +97,4 @@ public class BookingDbService
         
         return result;
     }
-
-
-    public async Task<Booking> UpdateAsync(string id, Booking bookingIn)
-    {
-        await _bookingService.ReplaceOneAsync(booking => booking.Id == id, bookingIn);
-        return bookingIn;
-    }
-
-    public async Task<DeleteResult> RemoveAsync(Booking bookingServiceIn)
-    {
-        return await _bookingService.DeleteOneAsync(booking => booking.Id == bookingServiceIn.Id);
-    }
-
-    public async Task<DeleteResult> RemoveAsync(string id)
-    {
-        return await _bookingService.DeleteOneAsync(booking => booking.Id == id);
-    }
-
-
 }

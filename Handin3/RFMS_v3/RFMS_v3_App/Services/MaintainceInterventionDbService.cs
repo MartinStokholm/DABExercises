@@ -3,55 +3,40 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using RFMS_v3_App.Models;
 using Microsoft.AspNetCore.Mvc;
+using RFMS_v3_App.Models.Dto;
 
 namespace RFMS_v3_App.Services;
 
 public class MaintainceInterventionDbService
 {
     private readonly IMongoCollection<MaintenanceIntervention> _maintainceInterventionCollection;
-
+    private readonly IMongoCollection<Facility> _facilityCollection;
+    
     public MaintainceInterventionDbService(IOptions<MongoDbSettings> mongoDBSettings)
     {
         MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
         IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
-        _maintainceInterventionCollection = database.GetCollection<MaintenanceIntervention>(mongoDBSettings.Value.CollectionName);
+        _maintainceInterventionCollection = database.GetCollection<MaintenanceIntervention>("MaintenanceInterventionsCollection");
+        _facilityCollection = database.GetCollection<Facility>("FacilitiesCollection");
+
     }
-    public async Task<List<MaintenanceIntervention>> GetAsync()
+    public async Task<List<MaintenanceIntervention>> GetHistoryAsync()
     {
         return await _maintainceInterventionCollection.Find(maintenanceIntervention => true).ToListAsync();
     }
 
-    public async Task<MaintenanceIntervention> GetAsync(string id)
+    public async Task<MaintenanceIntervention> CreateAsync(MaintenanceInterventionCreateDto maintenanceIntervention)
     {
-        return await _maintainceInterventionCollection
-                        .Find(maintenanceIntervention => maintenanceIntervention.Id == id)
-                        .FirstOrDefaultAsync();
+        var newMaintenanceIntervention = new MaintenanceIntervention();
+        var facility = _facilityCollection.Find(facility => facility.Name == maintenanceIntervention.FacilityName).FirstOrDefault();
+        
+        newMaintenanceIntervention.Id = ObjectId.GenerateNewId().ToString();
+        newMaintenanceIntervention.Description = maintenanceIntervention.Description;
+        newMaintenanceIntervention.Date = maintenanceIntervention.Date;
+        newMaintenanceIntervention.Facility = facility;
+
+        await _maintainceInterventionCollection.InsertOneAsync(newMaintenanceIntervention);
+        
+        return newMaintenanceIntervention;
     }
-
-    public MaintenanceIntervention CreateAsync(MaintenanceIntervention maintenanceIntervention)
-    {
-        _maintainceInterventionCollection.InsertOne(maintenanceIntervention);
-        return maintenanceIntervention;
-    }
-
-    public async Task<MaintenanceIntervention> UpdateAsync(string id, MaintenanceIntervention maintenanceInterventionIn)
-    {
-        await _maintainceInterventionCollection.ReplaceOneAsync(citizen => citizen.Id == id, maintenanceInterventionIn);
-        return maintenanceInterventionIn;
-    }
-
-    public async Task<DeleteResult> RemoveAsync(MaintenanceIntervention maintenanceInterventionIn)
-    {
-        return await _maintainceInterventionCollection
-            .DeleteOneAsync(maintenanceIntervention
-                => maintenanceIntervention.Id == maintenanceInterventionIn.Id);
-    }
-
-    public async Task<DeleteResult> RemoveAsync(string id)
-    {
-        return await _maintainceInterventionCollection
-            .DeleteOneAsync(maintenanceIntervention => maintenanceIntervention.Id == id);
-    }
-
-
 }

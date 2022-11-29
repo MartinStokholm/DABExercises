@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RFMS_v3_App.Models;
+using RFMS_v3_App.Models.Dto;
 using RFMS_v3_App.Services;
 
 namespace RFMS_v3_App.Controllers;
@@ -18,6 +19,14 @@ public class MaintenanceInterventionsController : ControllerBase
     [HttpGet("History")]
     public async Task<ActionResult<List<MaintenanceIntervention>>> GetMaintenanceHistory()
     {
-        return Ok();
+        var result = await _maintainceInterventionDbService.GetHistoryAsync();
+        return Ok(result);
+    }
+    
+    [HttpPost("CreateOne")]
+    public async Task<ActionResult<MaintenanceInterventionCreateDto>> Post([FromBody] MaintenanceInterventionCreateDto maintenanceIntervention)
+    {
+        await _maintainceInterventionDbService.CreateAsync(maintenanceIntervention);
+        return Accepted(maintenanceIntervention);
     }
 }

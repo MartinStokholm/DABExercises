@@ -24,54 +24,16 @@ public class FacilitiesController : ControllerBase
     }
 
     [HttpGet("GPSAndName/OrderBy/Kind/")]
-    public async Task<ActionResult<List<Facility>>> GetFacilitiesGPSAndNameOrderedByKind()
+    public async Task<ActionResult<List<FacilityGPSAndNameDto>>> GetFacilitiesGPSAndNameOrderedByKind()
     {
         return Ok(await _facilityDbService.GetFacilitiesOrderByKindAsync());
     }
-
-    [HttpGet]
-    public async Task<ActionResult<List<Facility>>> Get()
-    {
-        var citizens = await _facilityDbService.GetAsync();
-
-        return Ok(citizens);
-    }
-
-    [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<Facility>> Get(string id)
-    {
-        var citizen = await _facilityDbService.GetAsync(id);
-
-        if (citizen == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(citizen);
-    }
-
-    [HttpPost]
+  
+    [HttpPost("CreateOne")]
     public async Task<ActionResult<FacilityNoIdDto>> Post([FromBody] FacilityNoIdDto facility)
     {
         await _facilityDbService.CreateAsync(facility);
         return Ok(facility);
     }
-
-
-    [HttpDelete("{id:length(24)}")]
-    public async Task<ActionResult> Delete(string id)
-    {
-        var citizen = await _facilityDbService.GetAsync(id);
-
-        if (citizen == null)
-        {
-            return NotFound();
-        }
-
-        await _facilityDbService.RemoveAsync(id);
-
-        return NoContent();
-    }
-
 
 }

@@ -26,38 +26,10 @@ public class CitizensController : ControllerBase
         return Ok(citizens);
     }
 
-    [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<CitizenNoIdDto>> Get(string id)
-    {
-        var citizen = await _citizenDbService.GetAsync(id);
-
-        if (citizen == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(citizen);
-    }
-
-    [HttpPost]
+    [HttpPost("CreateOne")]
     public async Task<ActionResult<CitizenNoIdDto>> Post([FromBody] CitizenNoIdDto citizen)
     {
         await _citizenDbService.CreateAsync(citizen);
         return Ok(citizen);
-    }
-
-    [HttpDelete("{id:length(24)}")]
-    public async Task<ActionResult> Delete(string id)
-    {
-        var citizen = await _citizenDbService.GetAsync(id);
-
-        if (citizen == null)
-        {
-            return NotFound();
-        }
-
-        await _citizenDbService.RemoveAsync(id);
-
-        return NoContent();
     }
 }
