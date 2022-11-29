@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "638670618a60dd2b8f0a4744"
+  },
+  "FirstName": "Bob",
+  "LastName": "The Builder",
+  "Email": "builderbob@mail.com",
+  "PhoneNumber": "22334455",
+  "Category": "business",
+  "CVR": 123213,
+  "CPR": 1212001234
+},{
+  "_id": {
+    "$oid": "638670738a60dd2b8f0a4745"
+  },
+  "FirstName": "Ann",
+  "LastName": "The Builder",
+  "Email": "builderann@mail.com",
+  "PhoneNumber": "11334455",
+  "Category": "private",
+  "CVR": null,
+  "CPR": 1212001235
+},{
+  "_id": {
+    "$oid": "638670838a60dd2b8f0a4746"
+  },
+  "FirstName": "John",
+  "LastName": "Doe",
+  "Email": "johndoe@mail.com",
+  "PhoneNumber": "99334455",
+  "Category": "private",
+  "CVR": null,
+  "CPR": 1212001236
+}]

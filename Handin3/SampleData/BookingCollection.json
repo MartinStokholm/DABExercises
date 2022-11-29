@@ -1,0 +1,132 @@
+[{
+  "_id": {
+    "$oid": "6386808d531b637067ac3908"
+  },
+  "BookingStartTime": {
+    "$date": {
+      "$numberLong": "1669759016455"
+    }
+  },
+  "BookingEndTime": {
+    "$date": {
+      "$numberLong": "1671055016455"
+    }
+  },
+  "NumberOfPeople": 3,
+  "Notes": "",
+  "Citizen": {
+    "_id": {
+      "$oid": "638670618a60dd2b8f0a4744"
+    },
+    "FirstName": "Bob",
+    "LastName": "The Builder",
+    "Email": "builderbob@mail.com",
+    "PhoneNumber": "22334455",
+    "Category": "business",
+    "CVR": 123213,
+    "CPR": 1212001234
+  },
+  "Facility": {
+    "_id": {
+      "$oid": "63866fd98a60dd2b8f0a4743"
+    },
+    "Name": "The Cozy Cabin",
+    "Kind": "Shelter",
+    "Longitude": 11,
+    "Latitude": 22,
+    "Reserved": true,
+    "UsageRules": "Just chill",
+    "Items": [
+      {
+        "Name": "Food",
+        "Amount": 4,
+        "Status": "Eatable"
+      },
+      {
+        "Name": "Pot",
+        "Amount": 2,
+        "Status": "Working"
+      },
+      {
+        "Name": "Pan",
+        "Amount": 1,
+        "Status": "Working"
+      },
+      {
+        "Name": "Cutlery",
+        "Amount": 8,
+        "Status": "Working"
+      }
+    ]
+  },
+  "CitizensCPR": [
+    1212001234,
+    1212001235,
+    1212001236
+  ]
+},{
+  "_id": {
+    "$oid": "638691a9da32bc749475a54d"
+  },
+  "BookingStartTime": {
+    "$date": {
+      "$numberLong": "1671923447811"
+    }
+  },
+  "BookingEndTime": {
+    "$date": {
+      "$numberLong": "1672009847811"
+    }
+  },
+  "NumberOfPeople": 2,
+  "Notes": "",
+  "Citizen": {
+    "_id": {
+      "$oid": "638670838a60dd2b8f0a4746"
+    },
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Email": "johndoe@mail.com",
+    "PhoneNumber": "99334455",
+    "Category": "private",
+    "CVR": null,
+    "CPR": 1212001236
+  },
+  "Facility": {
+    "_id": {
+      "$oid": "63866fd98a60dd2b8f0a4743"
+    },
+    "Name": "The Cozy Cabin",
+    "Kind": "Shelter",
+    "Longitude": 11,
+    "Latitude": 22,
+    "Reserved": true,
+    "UsageRules": "Just chill",
+    "Items": [
+      {
+        "Name": "Food",
+        "Amount": 4,
+        "Status": "Eatable"
+      },
+      {
+        "Name": "Pot",
+        "Amount": 2,
+        "Status": "Working"
+      },
+      {
+        "Name": "Pan",
+        "Amount": 1,
+        "Status": "Working"
+      },
+      {
+        "Name": "Cutlery",
+        "Amount": 8,
+        "Status": "Working"
+      }
+    ]
+  },
+  "CitizensCPR": [
+    1212001234,
+    1212001236
+  ]
+}]

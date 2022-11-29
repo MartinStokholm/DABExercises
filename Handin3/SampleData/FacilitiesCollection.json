@@ -1,39 +1,6 @@
 [{
   "_id": {
-    "$oid": "638657e5422855fcd29a9bef"
-  },
-  "FirstName": "Bob",
-  "LastName": "The Builder",
-  "Email": "builderbob@mail.com",
-  "PhoneNumber": "22334455",
-  "Category": "business",
-  "CVR": 123213,
-  "CPR": 1212001234
-},{
-  "_id": {
-    "$oid": "63865811422855fcd29a9bf0"
-  },
-  "FirstName": "Ann",
-  "LastName": "The Builder",
-  "Email": "builderann@mail.com",
-  "PhoneNumber": "11334455",
-  "Category": "private",
-  "CVR": null,
-  "CPR": 1212001235
-},{
-  "_id": {
-    "$oid": "63865834422855fcd29a9bf1"
-  },
-  "FirstName": "John",
-  "LastName": "Doe",
-  "Email": "johndoe@mail.com",
-  "PhoneNumber": "99334455",
-  "Category": "private",
-  "CVR": null,
-  "CPR": 1212001236
-},{
-  "_id": {
-    "$oid": "638667112b3031ab19866a75"
+    "$oid": "63866f628a60dd2b8f0a4740"
   },
   "Name": "Great Green Place",
   "Kind": "Park",
@@ -60,7 +27,7 @@
   ]
 },{
   "_id": {
-    "$oid": "638667572b3031ab19866a76"
+    "$oid": "63866f9d8a60dd2b8f0a4741"
   },
   "Name": "Small Blue Place",
   "Kind": "Park",
@@ -87,7 +54,7 @@
   ]
 },{
   "_id": {
-    "$oid": "638667c92b3031ab19866a77"
+    "$oid": "63866fb68a60dd2b8f0a4742"
   },
   "Name": "BigGainz",
   "Kind": "Gym",
@@ -114,7 +81,7 @@
   ]
 },{
   "_id": {
-    "$oid": "638668802b3031ab19866a78"
+    "$oid": "63866fd98a60dd2b8f0a4743"
   },
   "Name": "The Cozy Cabin",
   "Kind": "Shelter",
