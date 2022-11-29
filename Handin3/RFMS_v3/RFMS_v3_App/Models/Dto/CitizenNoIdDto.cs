@@ -1,12 +1,22 @@
-﻿namespace RFMS_v3_App.Models.Dto
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace RFMS_v3_App.Models.Dto
 {
     public class CitizenNoIdDto
     {
-        public string FirstName { get; set; } = "";
-        public string LastName { get; set; } = "";
-        public string Email { get; set; } = "";
-        public string PhoneNumber { get; set; } = "";
-        public string Category { get; set; } = "";
-        public int? CVR { get; set; }
+        [BsonElement("FirstName")]
+        public string? FirstName { get; set; }
+        [BsonElement("LastName")]
+        public string? LastName { get; set; }
+        [BsonElement("Email")]
+        public string? Email { get; set; }
+        [BsonElement("PhoneNumber")]
+        public string? PhoneNumber { get; set; }
+        [BsonElement("Category")]
+        public string? Category { get; set; }
+        [BsonElement("CVR")]
+        public long? CVR { get; set; }
+        [BsonElement("CPR")]
+        public long CPR { get; set; }
     }
 }
