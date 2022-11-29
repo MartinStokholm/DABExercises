@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RFMS_v3_App.Models;
 using RFMS_v3_App.Models.Dto;
 using RFMS_v3_App.Services;
 
@@ -15,7 +16,7 @@ public class BookingsController : ControllerBase
     }
 
     [HttpGet("WithParticipantsCPR/{bookingId}")]
-    public async Task<ActionResult<BookingWithCitizenCPRDto>> GetBookingParticipantsCPR(string bookingId)
+    public async Task<ActionResult<Booking>> GetBookingParticipantsCPR(string bookingId)
     {
         return Ok();
     }

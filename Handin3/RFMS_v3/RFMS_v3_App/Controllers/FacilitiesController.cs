@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RFMS_v3_App.Models;
+using RFMS_v3_App.Models.Dto;
 using RFMS_v3_App.Services;
 
 namespace RFMS_v3_App.Controllers;
@@ -50,7 +51,7 @@ public class FacilitiesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Facility>> Post([FromBody] Facility facility)
+    public async Task<ActionResult<Facility>> Post([FromBody] FacilityNoIdDto facility)
     {
         await _facilityDbService.CreateAsync(facility);
         //return Ok(citizen);

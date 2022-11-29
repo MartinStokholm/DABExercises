@@ -47,22 +47,6 @@ public class CitizensController : ControllerBase
         //return CreatedAtAction(nameof(Get), new { id = citizen.Id }, citizen);
     }
 
-    [HttpPut("{id:length(24)}")]
-    public async Task<ActionResult> PutCPR(string id, CitizenCPRDto updateCitizen)
-    {
-        var citizen = await _citizenDbService.GetAsync(id);
-
-        if (citizen == null)
-        {
-            return NotFound();
-        }
-        citizen.CPR = updateCitizen.CPR;
-
-        await _citizenDbService.UpdateAsync(id, citizen);
-
-        return NoContent();
-    }
-
     [HttpDelete("{id:length(24)}")]
     public async Task<ActionResult> Delete(string id)
     {

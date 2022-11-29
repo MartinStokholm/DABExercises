@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RFMS_v3_App.Models;
 using RFMS_v3_App.Models.Dto;
 using RFMS_v3_App.Services;
 
@@ -16,7 +17,7 @@ public class ReservationsController : ControllerBase
     }
     
     [HttpGet("ReservationDetails")]
-    public async Task<ActionResult<List<ReservationDetailsWithGPSDto>>> GetReservations()
+    public async Task<ActionResult<List<Reservation>>> GetReservations()
     {
         return Ok();
     }
